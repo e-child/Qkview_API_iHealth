@@ -1,22 +1,4 @@
 #!/bin/bash
-p=''
-while true; do
-  IFS=
-  read -s -n1 CHAR
-  HEX=$(xxd -pu <<< "$CHAR")
-  case "$HEX" in
-     0a)   echo -e "\r\r"
-           break;;
-     7f0a) echo -ne "\b \b"
-           p=$(echo $p | sed -e 's/.$//');;
-     *)    echo -n "*"
-           p=$p$CHAR
-  esac
-done
-echo "pasword = $p"
-
-
-#!/bin/bash
 # Enter user credentials for authentication
 echo -n "Enter your iHealth user name (Email Address): "
 read  USER_ID
